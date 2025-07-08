@@ -15,7 +15,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-const client = new MongoClient(process.env.MONGO_URI);
+const client = new MongoClient(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  tls: true
+});
 const dbName = "passop";
 
 client.connect()
